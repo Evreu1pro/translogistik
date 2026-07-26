@@ -513,6 +513,46 @@ body {
   max-width: 40ch
 }
 
+/* Right-side quote — balances the empty side of the HEUTE video */
+.fleet-quote {
+  position: absolute;
+  z-index: 6;
+  right: max(24px, calc((100vw - var(--max)) / 2));
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  max-width: min(340px, 32vw);
+  padding: 0 0 0 22px;
+  border: 0;
+  border-left: 2px solid rgba(255, 255, 255, .28);
+  text-align: left;
+  pointer-events: none;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, .5)
+}
+
+.fleet-quote p {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.25;
+  letter-spacing: .01em;
+  color: rgba(255, 255, 255, .92)
+}
+
+.fleet-quote footer {
+  margin-top: 14px;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .55)
+}
+
 .route-burst {
   position: absolute;
   z-index: 4;
@@ -823,10 +863,11 @@ body {
   .fleet-copy {
     left: 16px;
     right: 16px;
-    top: 50%;
+    top: 42%;
     bottom: auto;
     transform: translateY(-50%);
-    position: absolute
+    position: absolute;
+    max-width: none
   }
 
   .fleet-copy .date {
@@ -837,6 +878,20 @@ body {
 
   .fleet-copy h3 {
     font-size: 38px
+  }
+
+  .fleet-quote {
+    right: 16px;
+    left: 16px;
+    top: auto;
+    bottom: 10%;
+    transform: none;
+    max-width: none;
+    padding-left: 16px
+  }
+
+  .fleet-quote p {
+    font-size: 20px
   }
 
   .career {
