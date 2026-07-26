@@ -1,0 +1,900 @@
+/* Über uns page — unique sections & shared-style overrides */
+body {
+  letter-spacing: .02em
+}
+
+/* ── Shared hero overrides (reset styles.css .hero pseudo-elements) ── */
+.hero {
+  background: #171615;
+  align-items: end;
+  isolation: auto
+}
+
+.hero:before,
+.hero:after {
+  display: none
+}
+
+/* ── Page hero (full‑bleed image with gradient) ── */
+.hero-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  filter: saturate(.92) contrast(1.04);
+  transform: scale(1.02);
+  animation: heroIn 1.2s var(--ease) forwards
+}
+
+.hero-media:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(13, 12, 11, .82) 0%, rgba(13, 12, 11, .48) 52%, rgba(13, 12, 11, .08) 82%), linear-gradient(0deg, rgba(13, 12, 11, .76) 0%, transparent 58%)
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 120px 0 50px;
+  min-height: 70svh;
+  display: flex;
+  align-items: flex-end
+}
+
+.hero-grid {
+  width: 100%;
+  display: grid;
+  gap: 0;
+  align-items: end
+}
+
+.hero h1 {
+  font-size: clamp(48px, 6vw, 86px);
+  line-height: .96;
+  letter-spacing: -.02em;
+  margin: 0;
+  max-width: 10.5ch
+}
+
+.hero h1 span {
+  display: block
+}
+
+.hero h1 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  letter-spacing: .01em
+}
+
+.hero-lead {
+  max-width: 48ch;
+  font-size: 18px;
+  line-height: 1.62;
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, .74)
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 32px
+}
+
+.hero-actions .btn {
+  min-height: 44px;
+  font-size: 13px
+}
+
+.route {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 7%;
+  width: 100%;
+  height: 31%;
+  pointer-events: none
+}
+
+.route path {
+  fill: none;
+  stroke: var(--red2, #dd2c38);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: draw 1.6s .5s var(--ease) forwards
+}
+
+.scroll-cue {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 3;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  display: flex;
+  gap: 12px;
+  align-items: center
+}
+
+.scroll-cue:after {
+  content: "";
+  width: 1px;
+  height: 56px;
+  background: rgba(255, 255, 255, .55)
+}
+
+/* ── Intro (mission + principles) ── */
+.intro {
+  padding: 96px 0 88px
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 56px;
+  align-items: center
+}
+
+.intro-media {
+  margin: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  max-height: 520px;
+  background: #201f1d
+}
+
+.intro-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block
+}
+
+.intro-text .eyebrow {
+  margin-bottom: 18px
+}
+
+.intro h2 {
+  font-size: clamp(36px, 4.6vw, 64px);
+  line-height: .98;
+  letter-spacing: -.045em;
+  margin: 0;
+  max-width: 14ch
+}
+
+.intro-copy {
+  max-width: 48ch;
+  margin: 24px 0 0;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.55;
+  color: var(--muted)
+}
+
+.principles {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line)
+}
+
+.principle {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 28px 32px 0;
+  border-right: 1px solid var(--line)
+}
+
+.principle+.principle {
+  padding-left: 28px
+}
+
+.principle:last-child {
+  border: 0
+}
+
+/* Reserve 2 lines so long titles don’t push copy lower than neighbors */
+.principle b {
+  display: block;
+  min-height: 2.6em;
+  font-size: 17px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  letter-spacing: -.02em
+}
+
+.principle p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+  margin-top: auto
+}
+
+/* ── Story timeline (scroll-driven) ── */
+.story {
+  position: relative;
+  background: #201f1d;
+  color: #f7f5f1
+}
+
+/* Tighter scroll travel: 4 phases still map 0→1, just less empty distance */
+.story-shell {
+  height: 300vh
+}
+
+.story-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden
+}
+
+.story-progress {
+  position: absolute;
+  z-index: 6;
+  left: calc((100vw - min(calc(100vw - 48px), var(--max)))/2 - 28px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px
+}
+
+.progress-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .45);
+  background: transparent;
+  transition: .3s
+}
+
+.progress-dot.on {
+  background: var(--red);
+  border-color: var(--red);
+  transform: scale(1.4)
+}
+
+.story-counter {
+  position: absolute;
+  z-index: 6;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  letter-spacing: .16em;
+  writing-mode: vertical-rl;
+  color: rgba(255, 255, 255, .58)
+}
+
+.story-item {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateY(34px) scale(.985);
+  transition: opacity .55s var(--ease), transform .7s var(--ease);
+  pointer-events: none
+}
+
+.story-item.active {
+  opacity: 1;
+  transform: none
+}
+
+.story-item .wrap {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 48px;
+  align-items: center
+}
+
+.date {
+  font-size: clamp(80px, 13vw, 186px);
+  line-height: .78;
+  letter-spacing: -.03em;
+  font-weight: 850;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, .34)
+}
+
+.story-item.active .date {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, .84)
+}
+
+.story-copy {
+  max-width: 570px
+}
+
+.story-copy .chapter {
+  color: #ef4550;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: 12px;
+  font-weight: 800
+}
+
+.story-copy h3 {
+  font-size: clamp(36px, 4.3vw, 64px);
+  line-height: 1;
+  letter-spacing: -.01em;
+  margin: 18px 0
+}
+
+.story-copy p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, .68);
+  max-width: 46ch
+}
+
+.ghost-line {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 68%;
+  height: 1px;
+  background: rgba(255, 255, 255, .13);
+  overflow: visible
+}
+
+.ghost-line:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: var(--line-progress, 0%);
+  height: 3px;
+  background: var(--red);
+  transition: width .65s var(--ease)
+}
+
+/* ── Fleet (video scene inside story — HEUTE) ── */
+/*
+  Source clip is ~10s "dusk → brighter" and loops. Without a constant dim,
+  darkening feels strong at the start of each loop then “lifts” as the shot
+  brightens. No opacity fades on layers — only show/hide via .active.
+*/
+.fleet {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  visibility: hidden;
+  z-index: 2
+}
+
+.fleet.active {
+  visibility: visible
+}
+
+.fleet .sticky-mobile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0c0b0a
+}
+
+.fleet-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  display: block;
+  background: #0c0b0a;
+  /* slight crop pushes corner watermark further off-frame */
+  transform: scale(1.07);
+  transform-origin: center center;
+  /* Cap brightness swing of the dusk→day loop */
+  filter: brightness(0.72) contrast(1.04) saturate(0.96)
+}
+
+/*
+  Layers:
+  1) .fleet-video
+  2) .fleet-dim + .fleet-scrim + .fleet-vignette + .fleet-wm
+  3) .fleet-copy
+*/
+
+/* Constant wash — stays the same every second of the loop */
+.fleet-dim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, .28);
+  pointer-events: none
+}
+
+/* Left readability + strong bottom black→transparent (watermark) */
+.fleet-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(12, 11, 10, .58) 0%, rgba(12, 11, 10, .22) 34%, transparent 64%),
+    linear-gradient(to top,
+      #000 0%,
+      rgba(0, 0, 0, .94) 10%,
+      rgba(0, 0, 0, .82) 20%,
+      rgba(0, 0, 0, .58) 36%,
+      rgba(0, 0, 0, .32) 52%,
+      rgba(0, 0, 0, .12) 68%,
+      transparent 84%);
+  pointer-events: none
+}
+
+.fleet-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(ellipse 92% 78% at 50% 40%,
+    transparent 0%,
+    transparent 56%,
+    rgba(0, 0, 0, .22) 100%)
+}
+
+/* Extra bottom-right density for Gemini sparkle */
+.fleet-wm {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  width: min(380px, 46vw);
+  height: min(240px, 34vh);
+  pointer-events: none;
+  background: radial-gradient(ellipse 100% 100% at 100% 100%,
+    rgba(0, 0, 0, .92) 0%,
+    rgba(0, 0, 0, .7) 28%,
+    rgba(0, 0, 0, .38) 50%,
+    transparent 72%)
+}
+
+/* Layer 3 — copy, optically centered on screen */
+.fleet-copy {
+  position: absolute;
+  z-index: 6;
+  left: max(24px, calc((100vw - var(--max)) / 2));
+  right: auto;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  max-width: 620px;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, .55), 0 1px 2px rgba(0, 0, 0, .4)
+}
+
+/* HEUTE: quieter than the main headline */
+.fleet-copy .date {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(52px, 7.2vw, 92px);
+  line-height: .88;
+  letter-spacing: .01em;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, .52);
+  -webkit-text-stroke: 0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, .4);
+  position: relative;
+  z-index: 1
+}
+
+.fleet-copy h3 {
+  font-size: clamp(38px, 5vw, 72px);
+  line-height: .95;
+  letter-spacing: -.045em;
+  margin: 0 0 18px;
+  max-width: 12ch;
+  color: #fff
+}
+
+.fleet-copy p {
+  color: rgba(255, 255, 255, .9);
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.55;
+  max-width: 40ch
+}
+
+.route-burst {
+  position: absolute;
+  z-index: 4;
+  right: 12%;
+  top: 24%;
+  width: 180px;
+  height: 180px;
+  opacity: var(--burst, 0);
+  transform: scale(calc(.5 + var(--burst, 0)*.5))
+}
+
+.route-burst i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--w);
+  height: 3px;
+  background: var(--red);
+  transform: rotate(var(--r)) translateX(var(--x));
+  transform-origin: left;
+  opacity: .85
+}
+
+/* ── Career CTA ── */
+.career {
+  padding: 100px 0;
+  background: var(--canvas)
+}
+
+.career-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--red);
+  color: white;
+  padding: 0;
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr);
+  align-items: stretch
+}
+
+/* no decorative circles — clean red field */
+
+.career-copy {
+  position: relative;
+  z-index: 3;
+  padding: 72px 40px 72px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+
+/* Eyebrow sits on the same optical line as the h2 block start */
+.career-copy .eyebrow {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, .88)
+}
+
+.career h2 {
+  font-size: clamp(42px, 5.6vw, 72px);
+  line-height: .98;
+  letter-spacing: -.02em;
+  margin: 0;
+  max-width: 11ch
+}
+
+.career-copy > p:not(.eyebrow) {
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 42ch;
+  color: rgba(255, 255, 255, .78);
+  margin: 28px 0 36px
+}
+
+.career-visual {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate
+}
+
+/* Big 05 sits BEHIND the figure — peeks above and beside the cutout.
+   Solid low-opacity fill (not thin stroke) stays sharp at large sizes. */
+.career-route {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 12%;
+  transform: translate3d(-50%, 0, 0);
+  font-size: clamp(150px, 18vw, 240px);
+  font-weight: 900;
+  line-height: .72;
+  color: rgba(255, 255, 255, .16);
+  -webkit-text-stroke: 0;
+  letter-spacing: -.06em;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+
+.career-figure {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  width: min(86%, 380px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none
+}
+
+.career-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(96%, 580px);
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, .3))
+}
+
+/* ── Component overrides ── */
+.btn-light {
+  background: white;
+  color: var(--red);
+  border-color: white
+}
+
+/* ── Keyframes ── */
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0
+  }
+}
+
+@keyframes heroIn {
+  from {
+    transform: scale(1.12);
+    filter: saturate(.6)
+  }
+
+  to {
+    transform: scale(1.02);
+    filter: saturate(.92) contrast(1.04)
+  }
+}
+
+/* ── Responsive ── */
+@media(max-width:800px) {
+  .hero {
+    min-height: 700px
+  }
+
+  .hero-content {
+    padding: 120px 0 50px;
+    min-height: auto
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    line-height: .98
+  }
+
+  .hero-lead {
+    margin-top: 20px;
+    line-height: 1.5;
+    font-size: 16px
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 24px
+  }
+
+  .hero-media img {
+    object-position: 58% center
+  }
+
+  .hero-media:after {
+    background: linear-gradient(0deg, rgba(13, 12, 11, .9) 8%, rgba(13, 12, 11, .42) 65%, rgba(13, 12, 11, .45))
+  }
+
+  .scroll-cue {
+    display: none
+  }
+
+  .intro {
+    padding: 48px 0
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 28px
+  }
+
+  .intro-media {
+    aspect-ratio: 16 / 11;
+    max-height: 280px
+  }
+
+  .intro h2 {
+    font-size: clamp(32px, 8.5vw, 44px)
+  }
+
+  .intro-copy {
+    font-size: 17px;
+    margin-top: 18px
+  }
+
+  .principles {
+    margin-top: 40px;
+    grid-template-columns: 1fr
+  }
+
+  .principle,
+  .principle+.principle {
+    padding: 20px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line)
+  }
+
+  .principle:last-child {
+    border: 0
+  }
+
+  .principle b {
+    min-height: 0
+  }
+
+  .story-shell {
+    height: auto
+  }
+
+  .story-stage {
+    position: relative;
+    height: auto;
+    overflow: visible
+  }
+
+  .story-progress,
+  .story-counter,
+  .ghost-line {
+    display: none
+  }
+
+  .story-item {
+    position: relative;
+    opacity: 1;
+    transform: none;
+    min-height: 0;
+    padding: 56px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+    display: flex
+  }
+
+  .story-item .wrap {
+    grid-template-columns: 1fr;
+    gap: 20px
+  }
+
+  .story-item .date {
+    font-size: 72px
+  }
+
+  .story-copy h3 {
+    font-size: 36px;
+    margin: 12px 0
+  }
+
+  .story-copy p {
+    font-size: 16px
+  }
+
+  /* Shorter mobile fleet-travel for fleet frames — same sticky behavior */
+  .fleet {
+    position: relative;
+    height: 100svh;
+    visibility: visible;
+    z-index: auto
+  }
+
+  .fleet-video {
+    filter: brightness(0.72) contrast(1.04) saturate(0.96)
+  }
+
+  .fleet .sticky-mobile {
+    position: relative;
+    height: 100%;
+    overflow: hidden
+  }
+
+  .fleet-video {
+    position: absolute;
+    inset: 0
+  }
+
+  .fleet-copy {
+    left: 16px;
+    right: 16px;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    position: absolute
+  }
+
+  .fleet-copy .date {
+    font-size: 48px;
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, .5)
+  }
+
+  .fleet-copy h3 {
+    font-size: 38px
+  }
+
+  .career {
+    padding: 56px 0
+  }
+
+  .career-card {
+    grid-template-columns: 1fr;
+    min-height: 0
+  }
+
+  .career-copy {
+    padding: 48px 24px 28px;
+    order: 1
+  }
+
+  .career h2 {
+    font-size: clamp(36px, 9vw, 44px);
+    line-height: 1.02
+  }
+
+  .career-copy > p:not(.eyebrow) {
+    margin: 20px 0 28px;
+    font-size: 16px
+  }
+
+  .career-visual {
+    order: 2;
+    min-height: 360px;
+    max-height: 460px
+  }
+
+  .career-route {
+    top: 2%;
+    font-size: clamp(120px, 34vw, 170px);
+    color: rgba(255, 255, 255, .14);
+    -webkit-text-stroke: 0
+  }
+
+  .career-figure {
+    width: min(92%, 360px)
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .hero-media img {
+    animation: none !important
+  }
+
+  .story-item {
+    transition: none
+  }
+
+  .fleet-video {
+    /* JS pauses playback; still frame stays under copy */
+  }
+
+  .route-burst {
+    display: none
+  }
+}

@@ -1,0 +1,791 @@
+/* Translogistik München — page-only styles.
+   Shared chrome, tokens, buttons, map, footer come from tokens.css + styles.css.
+   Scoped under .muenchen-page to avoid collisions. */
+
+/* ---------- layout shell ---------- */
+.muenchen-page {
+  padding-top: 0;
+}
+
+.muenchen-page main {
+  display: block;
+}
+
+/* ---------- HERO (light canvas, left readability, no center divider) ---------- */
+.muenchen-page .muc-hero {
+  position: relative;
+  min-height: 100svh;
+  padding: 150px 0 110px;
+  display: grid;
+  align-items: center;
+  color: var(--ink);
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.muenchen-page .muc-hero-art {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% center;
+  /* line-art skyline stays visible on light ground */
+  filter: grayscale(1) contrast(1.05) brightness(0.55);
+  opacity: .55;
+}
+
+/* Only tint the TEXT side (left) so copy stays readable — right stays airy/white */
+.muenchen-page .muc-hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg,
+      rgba(255, 254, 250, 0.97) 0%,
+      rgba(255, 254, 250, 0.92) 34%,
+      rgba(255, 254, 250, 0.55) 52%,
+      rgba(255, 254, 250, 0.12) 72%,
+      rgba(255, 254, 250, 0) 100%);
+  pointer-events: none;
+}
+
+/* no center divider line */
+.muenchen-page .muc-hero:after {
+  display: none;
+}
+
+.muenchen-page .muc-hero-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 48px;
+  align-items: end;
+  min-height: 560px;
+  position: relative;
+  z-index: 2;
+}
+
+.muenchen-page .muc-hero-copy {
+  position: relative;
+  z-index: 2;
+  padding: 36px 0 24px;
+  max-width: 38ch;
+}
+
+.muenchen-page .muc-hero .eyebrow {
+  color: var(--muted);
+}
+
+.muenchen-page .muc-hero .eyebrow:before {
+  background: var(--red);
+}
+
+.muenchen-page .muc-hero h1 {
+  max-width: 11ch;
+  margin-bottom: 28px;
+  color: var(--ink);
+  font-size: clamp(44px, 7vw, 98px);
+  line-height: 0.93;
+  letter-spacing: -0.055em;
+  font-weight: 700;
+  font-family: inherit;
+}
+
+.muenchen-page .muc-hero h1 span {
+  display: block;
+}
+
+.muenchen-page .muc-hero h1 .city {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  color: var(--ink);
+}
+
+.muenchen-page .muc-hero .lead {
+  color: var(--muted);
+  max-width: 48ch;
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.55;
+}
+
+.muenchen-page .muc-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 34px;
+}
+
+/* Secondary = outline on light ground (same as site .btn) */
+.muenchen-page .muc-hero .btn--ghost {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: rgba(255, 254, 250, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.muenchen-page .muc-hero .btn--ghost:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* Route sits on light hero — red path + dots ON the path */
+.muenchen-page .muc-hero .route-svg {
+  bottom: -40px;
+  height: 320px;
+  z-index: 3;
+}
+
+.muenchen-page .muc-hero .route-dots {
+  display: none; /* dots live inside SVG now */
+}
+
+.muenchen-page .muc-hero .route-svg path.route-white {
+  stroke: rgba(27, 26, 24, 0.28);
+}
+
+.muenchen-page .muc-hero .route-svg .route-node {
+  fill: var(--paper);
+  stroke: var(--red);
+  stroke-width: 3;
+}
+
+/* ---------- generic section ---------- */
+
+
+.muenchen-page .muc-section {
+  padding: 96px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.muenchen-page .muc-section .section-head {
+  margin-bottom: 48px;
+}
+
+.muenchen-page .muc-section .section-head .lead {
+  margin: 0;
+}
+
+/* ---------- LEISTUNGEN ---------- */
+.muenchen-page .services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.muenchen-page .service {
+  min-height: 260px;
+  padding: 28px;
+  background: var(--paper);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+
+.muenchen-page .service .no {
+  display: block;
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 0.8;
+  letter-spacing: -0.07em;
+  font-weight: 850;
+  color: var(--red);
+}
+
+.muenchen-page .service h3 {
+  margin: 48px 0 12px;
+  font-size: clamp(22px, 2.4vw, 28px);
+  letter-spacing: -0.035em;
+}
+
+.muenchen-page .service p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 32ch;
+}
+
+/* ---------- STANDORTE (reuses shared .location-layout styles) ---------- */
+.muenchen-page .locations-muc {
+  background: var(--canvas);
+}
+
+.muenchen-page .locations-muc .location-panel .btn {
+  margin-top: 14px;
+}
+
+/* ---------- KARRIERE — match offene-stellen list ---------- */
+.muenchen-page .jobs-muc {
+  background: #e9e5de;
+}
+
+.muenchen-page .jobs-muc .list {
+  border-top: 1px solid var(--ink);
+}
+
+.muenchen-page .jobs-muc .job {
+  display: grid;
+  grid-template-columns: 88px 1fr auto;
+  align-items: center;
+  gap: 26px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  transition: padding 0.22s var(--ease), background 0.22s;
+}
+
+.muenchen-page .jobs-muc .job:hover {
+  padding-left: 18px;
+  padding-right: 18px;
+  background: var(--paper);
+}
+
+.muenchen-page .jobs-muc .job-no {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--red);
+  letter-spacing: 0.12em;
+}
+
+.muenchen-page .jobs-muc .job h3 {
+  font-size: clamp(23px, 2.5vw, 34px);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.muenchen-page .jobs-muc .job p {
+  color: var(--muted);
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.muenchen-page .jobs-muc .job-arrow {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--ink);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.muenchen-page .jobs-muc .job:hover .job-arrow {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+/* ---------- KONTAKT ---------- */
+.muenchen-page .kontakt-muc {
+  background: var(--canvas);
+}
+
+.muenchen-page .contact-grid {
+  display: grid;
+  grid-template-columns: 4.2fr 7.8fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.muenchen-page .partner-stack {
+  display: grid;
+  gap: 22px;
+}
+
+.muenchen-page .partner-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 0;
+  overflow: hidden;
+}
+
+.muenchen-page .partner-photo {
+  aspect-ratio: 4 / 3;
+  background:
+    linear-gradient(145deg, #3a3834 0%, #6d6860 55%, #b3232d 140%);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.muenchen-page .partner-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.35);
+  display: block;
+}
+
+.muenchen-page .partner-photo .photo-fallback {
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  padding: 24px;
+}
+
+.muenchen-page .partner-photo .photo-fallback strong {
+  display: block;
+  font-size: 42px;
+  letter-spacing: -0.04em;
+  margin-bottom: 8px;
+}
+
+.muenchen-page .partner-photo .photo-fallback span {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.muenchen-page .partner-body {
+  padding: 24px 26px 28px;
+}
+
+.muenchen-page .partner-body .eyebrow {
+  margin-bottom: 14px;
+}
+
+.muenchen-page .partner-body h3 {
+  margin: 0 0 6px;
+  font-size: clamp(26px, 2.6vw, 34px);
+  letter-spacing: -0.04em;
+}
+
+.muenchen-page .partner-role {
+  margin: 0 0 18px;
+  color: var(--red);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.muenchen-page .partner-meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.muenchen-page .partner-meta li {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.muenchen-page .partner-meta li span:first-child {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  font-weight: 700;
+  padding-top: 2px;
+}
+
+.muenchen-page .partner-meta a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 650;
+}
+
+.muenchen-page .partner-meta a:hover {
+  color: var(--red);
+}
+
+.muenchen-page .partner-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* Questionnaire */
+.muenchen-page .questionnaire {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  padding: 36px;
+  overflow: hidden;
+}
+
+.muenchen-page .questionnaire > h3 {
+  margin: 0;
+  font-size: clamp(26px, 2.8vw, 34px);
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.muenchen-page .questionnaire > .lead,
+.muenchen-page .questionnaire > p.intro {
+  margin: 12px 0 28px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+  max-width: 52ch;
+}
+
+.muenchen-page .steps {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.muenchen-page .step-dot {
+  height: 6px;
+  flex: 1;
+  background: var(--line);
+  transition: background 0.25s var(--ease);
+}
+
+.muenchen-page .step-dot.active {
+  background: var(--red);
+}
+
+.muenchen-page .question {
+  display: none;
+}
+
+.muenchen-page .question.active {
+  display: block;
+}
+
+.muenchen-page .question h4 {
+  margin: 0 0 8px;
+  font-size: clamp(20px, 2.2vw, 24px);
+  letter-spacing: -0.03em;
+}
+
+.muenchen-page .question > p {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+.muenchen-page .option-list {
+  display: grid;
+  gap: 10px;
+}
+
+.muenchen-page .option {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 56px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: var(--canvas);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  font-weight: 650;
+}
+
+.muenchen-page .option input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--red);
+}
+
+.muenchen-page .option:hover {
+  border-color: var(--ink);
+}
+
+.muenchen-page .option:has(input:checked) {
+  border-color: var(--red);
+  background: #f9e8e8;
+  color: var(--red);
+}
+
+.muenchen-page .fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.muenchen-page .fields .wide {
+  grid-column: 1 / -1;
+}
+
+.muenchen-page .fields label {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.muenchen-page .fields input,
+.muenchen-page .fields textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--canvas);
+  color: var(--ink);
+  padding: 14px 16px;
+  font: inherit;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.muenchen-page .fields input:focus,
+.muenchen-page .fields textarea:focus {
+  border-color: var(--ink);
+}
+
+.muenchen-page .fields textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.muenchen-page .question-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.muenchen-page .question-actions .btn[hidden] {
+  display: none !important;
+}
+
+.muenchen-page .wizard.hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.muenchen-page .confirmation {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  padding: 36px 28px;
+  background: rgba(255, 254, 250, 0.97);
+  backdrop-filter: blur(6px);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  overflow: hidden;
+}
+
+.muenchen-page .confirmation.show {
+  display: flex;
+  animation: mucConfirmIn .35s var(--ease) both;
+}
+
+@keyframes mucConfirmIn {
+  from { opacity: 0; transform: translateY(10px) scale(.98); }
+  to { opacity: 1; transform: none; }
+}
+
+.muenchen-page .confirmation h3 {
+  margin: 12px 0;
+  font-size: clamp(32px, 3.5vw, 48px);
+  letter-spacing: -0.05em;
+  position: relative;
+  z-index: 2;
+}
+
+.muenchen-page .confirmation p {
+  color: var(--muted);
+  max-width: 48ch;
+  line-height: 1.55;
+  position: relative;
+  z-index: 2;
+}
+
+.muenchen-page .confirmation .reference {
+  font-size: clamp(36px, 4vw, 52px);
+  letter-spacing: -0.06em;
+  color: var(--red);
+  font-weight: 850;
+  margin: 18px 0 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.muenchen-page .confirmation .eyebrow,
+.muenchen-page .confirmation .btn {
+  position: relative;
+  z-index: 2;
+}
+
+/* Red confetti / serpentine burst */
+.muenchen-page .confetti {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.muenchen-page .confetti i {
+  position: absolute;
+  top: -12px;
+  width: 8px;
+  height: 14px;
+  border-radius: 1px;
+  opacity: 0;
+  background: var(--red);
+  animation: mucConfetti 1.35s var(--ease) forwards;
+}
+
+.muenchen-page .confetti i:nth-child(3n) { width: 5px; height: 18px; background: #8e1720; }
+.muenchen-page .confetti i:nth-child(3n+1) { width: 10px; height: 10px; border-radius: 50%; background: #d6454f; }
+.muenchen-page .confetti i:nth-child(4n) { width: 3px; height: 22px; background: #b3232d; }
+.muenchen-page .confetti i:nth-child(5n) { background: #e8a0a5; }
+
+@keyframes mucConfetti {
+  0% { opacity: 0; transform: translate3d(0,-10px,0) rotate(0deg); }
+  12% { opacity: 1; }
+  100% { opacity: 0; transform: translate3d(var(--dx, 0px), 110vh, 0) rotate(var(--rot, 220deg)); }
+}
+
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .muenchen-page .services {
+    grid-template-columns: 1fr;
+  }
+
+  .muenchen-page .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .muenchen-page .fields {
+    grid-template-columns: 1fr;
+  }
+
+  .muenchen-page .fields .wide {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .muenchen-page .muc-hero {
+    min-height: auto;
+    padding: 120px 0 90px;
+  }
+
+  .muenchen-page .muc-hero .route-svg,
+  .muenchen-page .muc-hero .route-dots {
+    bottom: -80px;
+    height: 240px;
+  }
+
+  .muenchen-page .muc-section {
+    padding: 72px 0;
+  }
+
+  .muenchen-page .jobs-muc .job {
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+  }
+
+  .muenchen-page .jobs-muc .job-arrow {
+    display: none;
+  }
+
+  .muenchen-page .questionnaire {
+    padding: 24px;
+  }
+
+  .muenchen-page .service h3 {
+    margin-top: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .muenchen-page .muc-hero .route-svg path {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* ---------- sticky questionnaire (like process sticky stage) ---------- */
+.muenchen-page .kontakt-muc {
+  position: relative;
+}
+
+.muenchen-page .contact-grid--sticky {
+  align-items: start;
+}
+
+.muenchen-page .questionnaire--sticky {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+  overflow: hidden;
+}
+
+.muenchen-page .questionnaire {
+  font-family: inherit;
+}
+
+.muenchen-page .questionnaire h3,
+.muenchen-page .question h4,
+.muenchen-page .partner-body h3,
+.muenchen-page .service h3 {
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.muenchen-page .city-list button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .muenchen-page .questionnaire--sticky {
+    position: static;
+  }
+
+  .muenchen-page .muc-hero-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .muenchen-page .muc-hero-copy {
+    max-width: none;
+  }
+
+  .muenchen-page .muc-hero {
+    padding: 120px 0 90px;
+    align-items: end;
+  }
+
+  .muenchen-page .muc-hero:before {
+    background: linear-gradient(180deg,
+      rgba(255, 254, 250, 0.55) 0%,
+      rgba(255, 254, 250, 0.88) 48%,
+      rgba(255, 254, 250, 0.96) 100%);
+  }
+  .muenchen-page .muc-hero {
+    color: var(--ink);
+  }
+  .muenchen-page .muc-hero h1,
+  .muenchen-page .muc-hero h1 .city {
+    color: var(--ink);
+  }
+  .muenchen-page .muc-hero .lead {
+    color: var(--muted);
+  }
+}

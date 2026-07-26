@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Translogistik – Transport und professionelle Montage von Küchen. 9 Standorte in Deutschland.">
+  <meta name="theme-color" content="#B3232D">
+  <meta name="author" content="Evreu1pro">
+  <meta property="og:title" content="Translogistik — Transport + Montage">
+  <meta property="og:description" content="Transport und fachgerechte Montage von Küchen. Ein Ansprechpartner vom Lager bis zur eingebauten Küche.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://translogistik.vercel.app/">
+  <meta property="og:locale" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Translogistik — Transport + Montage</title>
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+  <header class="site-header" id="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#home" aria-label="Translogistik Startseite">
+        <img src="/assets/brand/logo.svg" alt="Translogistik">
+      </a>
+      <nav class="nav" id="nav" aria-label="Hauptnavigation">
+        <a href="#home" aria-current="page">Home</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="offene-stellen.html">Karriere bei Translogistik</a>
+      </nav>
+      <a class="btn btn--red header-cta" href="offene-stellen.html">Jetzt bewerben</a>
+      <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen">
+        <span aria-hidden="true">☰</span>
+        <span style="position:absolute;clip:rect(0 0 0 0)">Menü öffnen</span>
+      </button>
+    </div>
+  </header>
+
+
+  <main>
+
+
+    <!-- ============================================================ HERO - Ihre Kueche kommt an -->
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Transport + Montage für Küchen</p>
+            <h1><span>Ihre Küche kommt an.</span><span>Und wird fachgerecht montiert.</span></h1>
+            <p class="lead">Wir übernehmen den Weg vom Lager bis zur eingebauten Küche — Transport, Handling und Montage
+              mit einem Ansprechpartner.</p>
+            <div class="hero-actions"><a class="btn btn--red" href="#prozess">Den Ablauf ansehen</a><a class="btn"
+                href="#standorte">Standort finden →</a></div>
+          </div>
+        </div>
+        <div class="proof" aria-label="Bestätigte Fakten">
+          <div>Transport + Montage</div>
+          <div>9 Standorte in Deutschland</div>
+          <div>Bremen ab Sommer 2026</div>
+        </div>
+      </div><svg class="route-svg" viewBox="0 0 1440 430" preserveAspectRatio="none" aria-hidden="true">
+        <path class="route-white" d="M0 250 C240 250 320 150 500 175 S860 330 1030 250 S1260 140 1440 170"></path>
+        <path d="M0 285 C230 285 300 110 500 175 S860 360 1030 250 S1240 120 1440 185"></path>
+        <circle class="route-node" cx="500" cy="175" r="8"></circle>
+        <circle class="route-node" cx="1030" cy="250" r="8"></circle>
+      </svg>
+    </section>
+
+
+    <!-- ============================================================ PROCESS - Ablauf / Filmstrip (Ueber uns) -->
+    <section class="section process" id="prozess" style="--active:0">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Route in Motion</p>
+          </div>
+          <div>
+            <h2>Transport und Montage, aufeinander abgestimmt.</h2>
+            <p class="lead" style="margin-top:24px">Drei kontrollierte Schritte. Ein nachvollziehbarer Weg bis zur
+              aufgebauten Küche.</p>
+          </div>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Prozessschritte"><button class="tab" role="tab"
+            aria-selected="true" data-stage="0"><span>01</span>Ankommen</button><button class="tab" role="tab"
+            aria-selected="false" data-stage="1"><span>02</span>Aufbauen</button><button class="tab" role="tab"
+            aria-selected="false" data-stage="2"><span>03</span>Fertig</button></div>
+        <div class="filmstrip" id="filmstrip">
+          <div class="route-track" aria-hidden="true"></div>
+          <article class="poster" tabindex="0" data-stage="1" data-pos="0">
+            <div class="poster-media"><img src="/assets/img/home/process-01.jpg"
+                alt="Anlieferung der Küche am Einsatzort"><span class="poster-no">01</span></div>
+            <div class="poster-copy"><small>ANKOMMEN</small>
+              <h3>Küche sicher am richtigen Ort</h3>
+              <p>Transport und Anlieferung bis zum Einsatzort.</p>
+            </div>
+          </article>
+          <article class="poster" tabindex="0" data-stage="2" data-pos="1">
+            <div class="poster-media"><img src="/assets/img/home/process-02.jpg"
+                alt="Fachgerechte Montage der Küche vor Ort"><span class="poster-no">02</span></div>
+            <div class="poster-copy"><small>AUFBAUEN</small>
+              <h3>Montage, die zum Raum passt</h3>
+              <p>Fachgerechte Montage vor Ort.</p>
+            </div>
+          </article>
+          <article class="poster" tabindex="0" data-stage="3" data-pos="-1">
+            <div class="poster-media"><img src="/assets/img/home/process-03.jpg"
+                alt="Fertig gelieferte und montierte Küche"><span class="poster-no">03</span></div>
+            <div class="poster-copy"><small>FERTIG</small>
+              <h3>Bereit für den nächsten Moment</h3>
+              <p>Die gelieferte und montierte Küche als Ergebnis.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ LOCATIONS - 9 Standorte in Deutschland -->
+    <section class="section locations" id="standorte">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Standorte</p>
+          <div>
+            <h2>Der passende Standort. Direkt erreichbar.</h2>
+            <p class="lead" style="margin-top:24px">Die Liste bleibt das Hauptwerkzeug. Die Karte bestätigt die Auswahl
+              visuell.</p>
+          </div>
+        </div>
+        <div class="location-layout">
+          <div><label class="search"><span style="position:absolute;clip:rect(0 0 0 0)">Standort suchen</span><input id="city-search" placeholder="Stadt suchen …" autocomplete="off"><span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M16 16l5 5"/></svg></span></label>
+            <ul class="city-list" id="cities"></ul>
+            <div class="location-panel" aria-live="polite"><small class="eyebrow"
+                style="font-size:10px">Ausgewählt</small>
+              <h3 id="city-name" style="margin:15px 0 8px">Hamburg</h3>
+              <p id="city-info" style="color:var(--muted)">Kontaktdaten werden vor Produktion ergänzt.</p><a class="btn btn--red" id="city-link" href="404.html">Standortseite öffnen →</a>
+            </div>
+          </div>
+          <figure class="map"><img class="map-art" src="/assets/img/home/map.svg" alt="Deutschlandkarte"><svg
+              class="marker-layer" viewBox="0 0 100 120" aria-label="Auswählbare Translogistik-Standorte">
+              <g id="markers"></g>
+            </svg></figure>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ CAREER - Ein Arbeitstag, Schritt fuer Schritt -->
+    <section class="section career" id="karriere">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Karriere</p>
+          <div>
+            <h2>Ein Arbeitstag. Schritt für Schritt.</h2>
+            <p class="lead" style="margin-top:24px">Nicht nur über Aufgaben sprechen — sondern zeigen, wie ein Tag bei
+              Transport und Montage praktisch abläuft.</p>
+          </div>
+        </div>
+        <div class="day-journey">
+          <aside class="day-rail">
+            <p class="eyebrow">Dein Tag auf Route</p>
+            <h3>Von der Vorbereitung bis zur Übergabe.</h3>
+            <p>Beim Scrollen entsteht der Arbeitstag wie eine Treppe. Jede Stufe zeigt einen konkreten Moment, die
+              Verantwortung und das Ergebnis.</p><a class="btn btn--red" href="offene-stellen.html">Jetzt bewerben</a>
+          </aside>
+          <div class="day-steps">
+            <article class="day-step revealed" style="--step:0"><span class="day-time">07:00 · STANDORT</span>
+              <div class="day-step-head">
+                <h3>Tour vorbereiten</h3><span class="day-no">01</span>
+              </div>
+              <p>Route, Unterlagen und Ladung werden geprüft. Das Team klärt, was an welchem Einsatzort gebraucht wird.
+              </p>
+              <div class="day-tags"><span>Tourenplan</span><span>Ladung prüfen</span><span>Team-Briefing</span></div>
+            </article>
+            <article class="day-step" style="--step:1"><span class="day-time">08:00 · UNTERWEGS</span>
+              <div class="day-step-head">
+                <h3>Sicher ans Ziel</h3><span class="day-no">02</span>
+              </div>
+              <p>Die Küche wird geschützt transportiert. Fahrer und Montageteam behalten Zeitfenster und Ablauf
+                gemeinsam im Blick.</p>
+              <div class="day-tags"><span>Transport</span><span>Abstimmung</span><span>Verantwortung</span></div>
+            </article>
+            <article class="day-step" style="--step:2"><span class="day-time">10:30 · BEIM KUNDEN</span>
+              <div class="day-step-head">
+                <h3>Anliefern und aufbauen</h3><span class="day-no">03</span>
+              </div>
+              <p>Bauteile kommen an den richtigen Ort. Anschließend beginnt die fachgerechte Montage nach Planung.</p>
+              <div class="day-tags"><span>Handling</span><span>Montage</span><span>Sauberes Arbeiten</span></div>
+            </article>
+            <article class="day-step" style="--step:3"><span class="day-time">15:30 · ABSCHLUSS</span>
+              <div class="day-step-head">
+                <h3>Prüfen und übergeben</h3><span class="day-no">04</span>
+              </div>
+              <p>Das Ergebnis wird kontrolliert, der Einsatzort sauber hinterlassen und der Auftrag nachvollziehbar
+                abgeschlossen.</p>
+              <div class="day-tags"><span>Qualitätscheck</span><span>Übergabe</span><span>Rückmeldung</span></div>
+            </article>
+          </div>
+        </div>
+        <div class="future-jobs" id="initiativ">
+          <div class="jobs-copy"><strong>Bereit für deine nächste Route?</strong>
+            <p>Bewirb dich initiativ — wir melden uns mit dem passenden nächsten Schritt.</p>
+          </div><a class="apply-line" href="offene-stellen.html" aria-label="Initiativ bewerben"><span>Jetzt bewerben</span><span
+              class="apply-chev" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ GROUP - Krieger Gruppe / Markennetzwerk -->
+    <section class="section group-trust" id="gruppe">
+      <div class="wrap">
+        <div class="group-intro">
+          <div>
+            <p class="eyebrow">Krieger Gruppe</p>
+            <h2>Teil einer Gruppe, die Handel, Logistik und digitale Systeme verbindet.</h2>
+          </div>
+          <div>
+            <p class="lead">Jede Karte lässt sich aufklappen: mit kurzer Einordnung, visueller Fläche und direktem Weg
+              zur jeweiligen Marke.</p><a class="btn btn--red" href="https://krieger.de/" target="_blank"
+              rel="noopener">Krieger Gruppe entdecken ↗</a>
+          </div>
+        </div>
+        <div class="brand-network" aria-label="Marken und Bereiche der Krieger Gruppe">
+          <article class="brand-card" tabindex="0"><button class="brand-plus" type="button"
+              aria-label="Mehr über Höffner" aria-expanded="false">+</button>
+            <div class="brand-photo" data-mark="HF" role="img" aria-label="Bildfläche Höffner"><img
+                class="brand-photo-img" src="/assets/img/brands/hoeffner.jpg" alt="Höffner"></div>
+            <div class="brand-main"><small>Einrichtung</small>
+              <h3>Höffner</h3>
+              <div class="brand-detail">
+                <p>Möbelhäuser und Einrichtungslösungen innerhalb der Krieger Gruppe.</p><a class="btn btn--red"
+                  href="https://www.hoeffner.de/" target="_blank" rel="noopener">Website öffnen ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="brand-card" tabindex="0"><button class="brand-plus" type="button"
+              aria-label="Mehr über Möbel Kraft" aria-expanded="false">+</button>
+            <div class="brand-photo" data-mark="MK" role="img" aria-label="Bildfläche Möbel Kraft"><img
+                class="brand-photo-img" src="/assets/img/brands/moebel-kraft.avif" alt="Möbel Kraft"></div>
+            <div class="brand-main"><small>Einrichtung</small>
+              <h3>Möbel Kraft</h3>
+              <div class="brand-detail">
+                <p>Einrichtungshäuser mit Sortimenten für Wohnen, Küche und Haushalt.</p><a class="btn btn--red"
+                  href="https://www.moebel-kraft.de/" target="_blank" rel="noopener">Website öffnen ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="brand-card" tabindex="0"><button class="brand-plus" type="button"
+              aria-label="Mehr über Sconto" aria-expanded="false">+</button>
+            <div class="brand-photo" data-mark="SC" role="img" aria-label="Bildfläche Sconto"><img
+                class="brand-photo-img" src="/assets/img/brands/sconto.png" alt="Sconto"></div>
+            <div class="brand-main"><small>Discount</small>
+              <h3>Sconto</h3>
+              <div class="brand-detail">
+                <p>Discount-orientiertes Möbel- und Einrichtungsangebot der Unternehmensgruppe.</p><a
+                  class="btn btn--red" href="https://www.sconto.de/" target="_blank" rel="noopener">Website öffnen ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="brand-card" tabindex="0"><button class="brand-plus" type="button"
+              aria-label="Mehr über Möbel Mahler" aria-expanded="false">+</button>
+            <div class="brand-photo" data-mark="MM" role="img" aria-label="Bildfläche Möbel Mahler"><img
+                class="brand-photo-img" src="/assets/img/brands/moebel-mahler.jpeg" alt="Möbel Mahler"></div>
+            <div class="brand-main"><small>Einrichtung</small>
+              <h3>Möbel Mahler</h3>
+              <div class="brand-detail">
+                <p>Einrichtungsmarke im Umfeld der Gruppe. Rechtliche Zuordnung und Link vor Veröffentlichung final
+                  prüfen.</p><a class="btn btn--red" href="https://krieger.de/" target="_blank" rel="noopener">Zur
+                  Gruppe ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="brand-card" tabindex="0"><button class="brand-plus" type="button"
+              aria-label="Mehr über Krieger Digital" aria-expanded="false">+</button>
+            <div class="brand-photo" data-mark="KD" role="img" aria-label="Bildfläche Krieger Digital"><img
+                class="brand-photo-img" src="/assets/img/brands/krieger-digital.png" alt="Krieger Digital"></div>
+            <div class="brand-main"><small>Digital Hub</small>
+              <h3>Krieger Digital</h3>
+              <div class="brand-detail">
+                <p>Digitale Produkte, Plattformen und Technologie für die Unternehmen der Gruppe.</p><a
+                  class="btn btn--red" href="https://www.kriegerdigital.de/" target="_blank" rel="noopener">Website
+                  öffnen ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="brand-card" tabindex="0"><button class="brand-plus" type="button"
+              aria-label="Mehr über Design24" aria-expanded="false">+</button>
+            <div class="brand-photo" data-mark="D24" role="img" aria-label="Bildfläche Design24"><img
+                class="brand-photo-img" src="/assets/img/brands/design24.png" alt="Design24"></div>
+            <div class="brand-main"><small>E-Commerce</small>
+              <h3>Design24</h3>
+              <div class="brand-detail">
+                <p>Digitaler Handelsbereich. Finale Markenbeschreibung und Ziel-URL werden vor Produktion bestätigt.</p>
+                <a class="btn btn--red" href="https://krieger.de/" target="_blank" rel="noopener">Zur Gruppe ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="brand-card" tabindex="0"><button class="brand-plus" type="button"
+              aria-label="Mehr über sofa.de" aria-expanded="false">+</button>
+            <div class="brand-photo" data-mark="SO" role="img" aria-label="Bildfläche sofa.de"><img
+                class="brand-photo-img" src="/assets/img/brands/sofa-de.png" alt="sofa.de"></div>
+            <div class="brand-main"><small>E-Commerce</small>
+              <h3>sofa.de</h3>
+              <div class="brand-detail">
+                <p>Online-Angebot mit Fokus auf Sofas und Polstermöbel.</p><a class="btn btn--red"
+                  href="https://www.sofa.de/" target="_blank" rel="noopener">Website öffnen ↗</a>
+              </div>
+            </div>
+          </article>
+          <article class="brand-card" tabindex="0"><button class="brand-plus" type="button"
+              aria-label="Mehr über Krieger Logistik" aria-expanded="false">+</button>
+            <div class="brand-photo" data-mark="KL" role="img" aria-label="Bildfläche Krieger Logistik"><img
+                class="brand-photo-img" src="/assets/img/brands/krieger-logistik.jpg" alt="Krieger Logistik"></div>
+            <div class="brand-main"><small>Logistik</small>
+              <h3>Krieger Logistik</h3>
+              <div class="brand-detail">
+                <p>Logistikstrukturen für Warenfluss, Auslieferung und operative Prozesse der Gruppe.</p><a
+                  class="btn btn--red" href="https://krieger.de/krieger-logistik/" target="_blank" rel="noopener">Mehr
+                  erfahren ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="source-note">
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="footer-logo" aria-label="Nach oben">
+          <img src="/assets/brand/logo.svg" alt="Translogistik">
+        </a>
+        <p>Transport und fachgerechte Montage für Küchen — vom Lager bis zum aufgebauten Ergebnis.</p>
+        <div class="socials" aria-label="Social Media">
+          <a href="https://www.instagram.com/translogistik_service/" target="_blank" rel="noopener"
+            aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61567198634443" target="_blank" rel="noopener"
+            aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer-col" aria-label="Unternehmen">
+        <strong>Unternehmen</strong>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="#gruppe">Krieger Gruppe</a>
+        <a href="offene-stellen.html">Karriere</a>
+      </nav>
+      <nav class="footer-col" aria-label="Leistungen">
+        <strong>Leistungen</strong>
+        <a href="#prozess">Transport</a>
+        <a href="#prozess">Montage</a>
+        <a href="#standorte">Standorte</a>
+      </nav>
+      <nav class="footer-col" aria-label="Kontakt">
+        <strong>Kontakt</strong>
+        <a href="https://translogistik.eu/" target="_blank" rel="noopener">Translogistik.eu ↗</a>
+        <a href="offene-stellen.html">Bewerbung</a>
+        <a href="#home">Nach oben ↑</a>
+      </nav>
+      <div class="footer-legal">
+        <span>© 2026 Translogistik · Prototyp</span>
+        <span>
+          <a href="impressum.html">Impressum</a> ·
+          <a href="datenschutz.html">Datenschutz</a> ·
+          Bildrechte und Fakten vor Produktion prüfen
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+
+</html>

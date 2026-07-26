@@ -1,0 +1,27 @@
+/**
+ * Translogistik design tokens
+ * Single source of truth — prefer these over hard-coded values in page CSS.
+ *
+ * Palette: warm paper + graphite ink + brand red CTAs
+ * Motion: --route is driven by JS (scroll progress 0–1) for the hero SVG
+ */
+:root {
+  /* Surfaces */
+  --canvas: #F7F5F1;
+  --paper: #FFFEFA;
+
+  /* Ink */
+  --ink: #1B1A18;
+  --muted: #6D6963;
+  --graphite: #31302D;
+
+  /* Brand */
+  --red: #B3232D;
+  --green: #2D7D55;
+  --line: #D8D4CD;
+
+  /* Layout & motion */
+  --route: 0;
+  --max: 1180px;
+  --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+}

@@ -1,0 +1,534 @@
+/* Translogistik - Offene Stellen (Karriere-Listenseite). */
+/* Header, Footer, .btn, .eyebrow, .lead kommen aus styles.css; diese Datei   */
+/* enthaelt nur die seiteneigenen Sektionen (Hero, Stellenliste, Quereinstieg).*/
+/* Alle Regeln sind unter .jobs-page gescoped, um Kollisionen mit styles.css  */
+/* (u.a. .hero, .section-head, .hero-grid) zu vermeiden.                       */
+
+/* Hero */
+.jobs-page .jobs-hero {
+  position: relative;
+  min-height: 640px;
+  display: grid;
+  align-items: end;
+  padding: 150px 0 0;
+  color: #fff;
+  isolation: isolate;
+  overflow: hidden;
+  background: #20211f;
+  border-bottom: 1px solid var(--line);
+}
+
+.jobs-page .jobs-hero:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: linear-gradient(90deg, rgba(17, 18, 16, 0.92) 0%, rgba(17, 18, 16, 0.66) 50%, rgba(17, 18, 16, 0.28) 100%), url("../img/careers/hero.png");
+  background-size: cover;
+  background-position: center right;
+}
+
+.jobs-page .jobs-hero:after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, rgba(17, 18, 16, 0.75));
+  z-index: -1;
+  pointer-events: none;
+}
+
+.jobs-page .jobs-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  align-items: end;
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding-bottom: 36px;
+}
+
+.jobs-page .jobs-hero h1 {
+  font-size: clamp(48px, 7vw, 92px);
+  letter-spacing: -.065em;
+  line-height: .91;
+  margin-bottom: 24px;
+  max-width: 11ch;
+  color: #fff;
+}
+
+.jobs-page .jobs-hero .lead {
+  color: rgba(255, 255, 255, 0.86);
+  margin-top: 8px;
+  max-width: 48ch;
+}
+
+.jobs-page .jobs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.jobs-page .jobs-hero-btn-ghost {
+  border-color: rgba(255, 255, 255, 0.75);
+  color: #fff;
+  background: rgba(20, 20, 19, 0.45);
+}
+
+.jobs-page .jobs-hero-btn-ghost:hover {
+  background: rgba(20, 20, 19, 0.72);
+  color: #fff;
+}
+
+.jobs-page .jobs-hero-aside {
+  border-left: 1px solid rgba(255, 255, 255, 0.38);
+  padding: 8px 0 8px 24px;
+}
+
+.jobs-page .jobs-hero-aside strong {
+  display: block;
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.jobs-page .jobs-hero-aside p {
+  margin: 10px 0 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+/* Ablauf 01/02/03 — compact band, soft watermark numbers */
+.jobs-page .route {
+  position: relative;
+  z-index: 1;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  align-items: stretch;
+}
+
+.jobs-page .route-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  min-height: 88px;
+  padding: 22px 18px 24px;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+}
+
+.jobs-page .route-step:last-child {
+  border-right: 0;
+}
+
+/* Soft numbers — open tracking; same tone as labels */
+.jobs-page .route-no {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(32px, 3.8vw, 48px);
+  font-weight: 900;
+  line-height: .8;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.78);
+  pointer-events: none;
+  user-select: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  z-index: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.jobs-page .route-label {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Stellenliste */
+.jobs-page .jobs {
+  padding: 88px 0 110px;
+}
+
+.jobs-page .jobs-section-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  margin-bottom: 42px;
+  align-items: end;
+}
+
+.jobs-page .jobs-section-head p:last-child {
+  margin-bottom: 0;
+}
+
+.jobs-page .jobs-section-head h2 {
+  font-size: clamp(38px, 5.4vw, 76px);
+  line-height: .98;
+  letter-spacing: -.045em;
+  margin: 0;
+}
+
+.jobs-page .jobs-section-head .lead {
+  margin-top: 0;
+  align-self: end;
+}
+
+.jobs-page .list {
+  border-top: 1px solid var(--ink);
+}
+
+.jobs-page .job {
+  display: grid;
+  grid-template-columns: 88px 1fr auto;
+  align-items: center;
+  gap: 26px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  transition: padding .22s var(--ease), background .22s;
+}
+
+.jobs-page .job:hover {
+  padding-left: 18px;
+  padding-right: 18px;
+  background: var(--paper);
+}
+
+.jobs-page .job-no {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--red);
+  letter-spacing: .12em;
+}
+
+.jobs-page .job h3 {
+  font-size: clamp(23px, 2.5vw, 34px);
+  letter-spacing: -.04em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.jobs-page .job p {
+  color: var(--muted);
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.jobs-page .job-arrow {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--ink);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  transition: background .2s, color .2s;
+}
+
+.jobs-page .job:hover .job-arrow {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+/* Quereinstieg — inline questionnaire (same logic as job-detail Kurzbewerbung) */
+.jobs-page .init {
+  background: var(--graphite);
+  color: #fff;
+  padding: 96px 0 110px;
+}
+
+.jobs-page .init-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.jobs-page .init h2 {
+  font-size: clamp(38px, 5.4vw, 72px);
+  line-height: .98;
+  letter-spacing: -.045em;
+  margin: 0;
+  max-width: 12ch;
+  color: #fff;
+}
+
+.jobs-page .init .lead {
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 28px;
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.55;
+  max-width: 42ch;
+}
+
+.jobs-page .init .eyebrow {
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.jobs-page .init-note {
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 40ch;
+  border-left: 3px solid var(--red);
+  padding-left: 16px;
+}
+
+.jobs-page .flow {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 28px;
+  background: rgba(18, 18, 17, 0.45);
+  color: #fff;
+}
+
+.jobs-page .flow__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: start;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 20px;
+}
+
+.jobs-page .flow__head b {
+  display: block;
+  font-size: 18px;
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+}
+
+.jobs-page .flow__head p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.jobs-page .jd-progress {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  color: #f0a0a6;
+  white-space: nowrap;
+}
+
+.jobs-page .step {
+  display: none;
+  padding-top: 28px;
+}
+
+.jobs-page .step.active {
+  display: block;
+}
+
+.jobs-page .question {
+  margin: 0 0 22px;
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.12;
+  letter-spacing: -.035em;
+  color: #fff;
+}
+
+.jobs-page .choice {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-align: left;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  margin: 9px 0;
+  cursor: pointer;
+  transition: border .18s, background .18s;
+  font-weight: 650;
+}
+
+.jobs-page .choice:hover,
+.jobs-page .choice:focus-visible {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+.jobs-page .choice__dot {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  flex: none;
+}
+
+.jobs-page .choice:hover .choice__dot {
+  background: var(--red);
+  box-shadow: inset 0 0 0 4px rgba(18, 18, 17, 0.9);
+  border-color: var(--red);
+}
+
+.jobs-page .back {
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  background: none;
+  color: #fff;
+  padding: 4px 0;
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 22px;
+  cursor: pointer;
+}
+
+.jobs-page .fields {
+  display: grid;
+  gap: 14px;
+}
+
+.jobs-page .field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.jobs-page .field input {
+  width: 100%;
+  min-height: 51px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 0 13px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 16px;
+}
+
+.jobs-page .field input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.jobs-page .field input:focus {
+  outline: 3px solid rgba(179, 35, 45, 0.35);
+  border-color: var(--red);
+}
+
+.jobs-page .submit {
+  margin-top: 18px;
+  width: 100%;
+}
+
+.jobs-page .result {
+  display: none;
+  padding-top: 28px;
+}
+
+.jobs-page .result.active {
+  display: block;
+}
+
+.jobs-page .result h3 {
+  margin: 0 0 12px;
+  font-size: clamp(26px, 3vw, 34px);
+  letter-spacing: -.04em;
+  color: #fff;
+}
+
+.jobs-page .result p {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+  max-width: 46ch;
+  margin: 0 0 24px;
+}
+
+.jobs-page .result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.jobs-page .result-actions .btn:not(.btn--red) {
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+  background: transparent;
+}
+
+@media(max-width: 800px) {
+  .jobs-page .jobs-hero {
+    padding: 120px 0 0;
+  }
+
+  .jobs-page .jobs-hero-grid {
+    padding-bottom: 24px;
+  }
+  
+  .jobs-page .jobs-hero-grid,
+  .jobs-page .jobs-section-head,
+  .jobs-page .init-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  
+  .jobs-page .route {
+    margin-top: 4px;
+    grid-template-columns: 1fr;
+  }
+  
+  .jobs-page .route-step {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    min-height: 72px;
+    padding: 16px 8px 16px 0;
+  }
+  
+  .jobs-page .route-step:last-child {
+    border-bottom: 0;
+  }
+
+  .jobs-page .route-no {
+    right: 8px;
+    font-size: 34px;
+    letter-spacing: 0.16em;
+  }
+
+  .jobs-page .route-label {
+    font-size: 13px;
+  }
+  
+  .jobs-page .jobs {
+    padding: 64px 0 78px;
+  }
+  
+  .jobs-page .job {
+    grid-template-columns: 45px 1fr;
+    gap: 12px;
+    padding: 24px 0;
+  }
+  
+  .jobs-page .job-arrow {
+    display: none;
+  }
+  
+  .jobs-page .job h3 {
+    font-size: 25px;
+  }
+  
+  .jobs-page .init {
+    padding: 64px 0;
+  }
+}
