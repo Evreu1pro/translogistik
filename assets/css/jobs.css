@@ -23,7 +23,7 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  background-image: linear-gradient(90deg, rgba(17, 18, 16, 0.92) 0%, rgba(17, 18, 16, 0.66) 50%, rgba(17, 18, 16, 0.28) 100%), url("../img/careers/hero.png");
+  background-image: linear-gradient(90deg, rgba(17, 18, 16, 0.92) 0%, rgba(17, 18, 16, 0.66) 50%, rgba(17, 18, 16, 0.28) 100%), url("../img/careers/hero.jpg");
   background-size: cover;
   background-position: center right;
 }

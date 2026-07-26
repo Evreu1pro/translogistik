@@ -2,15 +2,57 @@
 <html lang="de">
 
 <head>
-  <base href="/">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Küchenmontage &amp; Küchentransport München | Translogistik München</title>
   <meta name="description"
-    content="Translogistik München — Transport und fachgerechte Küchenmontage in der Region München.">
-  <title>Translogistik München — Standort</title>
+    content="Translogistik München: Küchentransport und fachgerechte Küchenmontage in der Region München – für Möbelhäuser, Küchenstudios und Endkunden. Auch Küchenmonteur Jobs in München.">
+  <meta name="theme-color" content="#B3232D">
+  <link rel="canonical" href="https://translogistik.vercel.app/translogistik-muenchen">
+  <link rel="icon" href="/assets/brand/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/brand/logo.png">
+  <meta property="og:site_name" content="Translogistik">
+  <meta property="og:title" content="Küchenmontage &amp; Küchentransport München | Translogistik München">
+  <meta property="og:description" content="Transport und fachgerechte Küchenmontage in der Region München – mit direktem Weg zum Standort-Team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://translogistik.vercel.app/translogistik-muenchen">
+  <meta property="og:image" content="https://translogistik.vercel.app/assets/img/locations/muenchen-montage.jpg">
+  <meta property="og:locale" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/styles.css">
   <link rel="stylesheet" href="/assets/css/muenchen.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://translogistik.vercel.app/" },
+          { "@type": "ListItem", "position": 2, "name": "Standort München", "item": "https://translogistik.vercel.app/translogistik-muenchen" }
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://translogistik.vercel.app/translogistik-muenchen#standort",
+        "name": "Translogistik München",
+        "url": "https://translogistik.vercel.app/translogistik-muenchen",
+        "image": "https://translogistik.vercel.app/assets/img/locations/muenchen-montage.jpg",
+        "email": "info@translogistik.eu",
+        "description": "Küchentransport und fachgerechte Küchenmontage in der Region München.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "München",
+          "addressRegion": "Bayern",
+          "addressCountry": "DE"
+        },
+        "areaServed": { "@type": "City", "name": "München" },
+        "parentOrganization": { "@id": "https://translogistik.vercel.app/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="muenchen-page">
@@ -18,13 +60,13 @@
   <!-- ============================================================ HEADER (site shell) -->
   <header class="site-header is-compact" id="header" data-always-compact>
     <div class="wrap header-inner">
-      <a class="brand" href="index.html" aria-label="Translogistik Startseite">
+      <a class="brand" href="/" aria-label="Translogistik Startseite">
         <img src="/assets/brand/logo.svg" alt="Translogistik">
       </a>
       <nav class="nav" id="nav" aria-label="Hauptnavigation">
-        <a href="index.html">Home</a>
-        <a href="ueber-uns.html">Über uns</a>
-        <a href="offene-stellen.html">Karriere bei Translogistik</a>
+        <a href="/">Home</a>
+        <a href="/ueber-uns">Über uns</a>
+        <a href="/offene-stellen">Karriere bei Translogistik</a>
       </nav>
       <a class="btn btn--red header-cta" href="#kontakt">München kontaktieren</a>
       <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen">
@@ -38,7 +80,7 @@
 
     <!-- ============================================================ HERO -->
     <section class="muc-hero" id="home" aria-labelledby="muc-hero-title">
-      <img class="muc-hero-art" src="/assets/img/locations/muenchen-art.svg" alt="" aria-hidden="true">
+      <img class="muc-hero-art" src="/assets/img/locations/muenchen-art.jpg" width="1600" height="584" alt="" aria-hidden="true">
       <div class="wrap">
         <div class="muc-hero-grid">
           <div class="muc-hero-copy">
@@ -47,8 +89,8 @@
             <p class="lead">Transport und fachgerechte Küchenmontage in der Region München — mit einem direkten Weg zum
               zuständigen Standort-Team.</p>
             <div class="muc-hero-actions">
-              <a class="btn btn--ghost" href="#leistungen">Leistungen vor Ort →</a>
               <a class="btn btn--red" href="#kontakt">München kontaktieren</a>
+              <a class="btn btn--ghost" href="#leistungen">Leistungen vor Ort →</a>
             </div>
           </div>
         </div>
@@ -114,7 +156,17 @@
                   <circle cx="10.5" cy="10.5" r="6.5" />
                   <path d="M16 16l5 5" />
                 </svg></span></label>
-            <ul class="city-list" id="cities"></ul>
+            <ul class="city-list" id="cities">
+              <li><button type="button" class="is-live" aria-pressed="true">München</button></li>
+              <li><button type="button" aria-pressed="false">Hamburg</button></li>
+              <li><button type="button" aria-pressed="false">Bremen</button></li>
+              <li><button type="button" aria-pressed="false">Berlin</button></li>
+              <li><button type="button" aria-pressed="false">Paderborn</button></li>
+              <li><button type="button" aria-pressed="false">Günthersdorf</button></li>
+              <li><button type="button" aria-pressed="false">Köln</button></li>
+              <li><button type="button" aria-pressed="false">Langenselbold</button></li>
+              <li><button type="button" aria-pressed="false">Fürth</button></li>
+            </ul>
             <div class="location-panel" aria-live="polite">
               <small class="eyebrow" style="font-size:10px">Ausgewählt</small>
               <h3 id="city-name" style="margin:15px 0 8px">München</h3>
@@ -145,7 +197,7 @@
             Standort-Anfrage.</p>
         </div>
         <div class="list" aria-label="Offene Stellen">
-          <a class="job" href="kuechenmonteur.html">
+          <a class="job" href="/kuechenmonteur">
             <span class="job-no">01</span>
             <div>
               <h3>Küchenmonteur (m/w/d)</h3>
@@ -153,19 +205,19 @@
             </div>
             <span class="job-arrow" aria-hidden="true">→</span>
           </a>
-          <a class="job" href="404.html">
+          <a class="job" href="/offene-stellen#quereinstieg">
             <span class="job-no">02</span>
             <div>
               <h3>Ausbildung zum/zur Fachkraft für Möbelservice (m/w/d)</h3>
-              <p>Ausbildungsplatz im Bereich Möbelservice.</p>
+              <p>Ausbildungsplatz im Bereich Möbelservice — Anfrage über den Kurzcheck.</p>
             </div>
             <span class="job-arrow" aria-hidden="true">→</span>
           </a>
-          <a class="job" href="404.html">
+          <a class="job" href="/offene-stellen#quereinstieg">
             <span class="job-no">03</span>
             <div>
               <h3>Subunternehmer (m/w/d)</h3>
-              <p>Zusammenarbeit im Transport- und Montageumfeld.</p>
+              <p>Zusammenarbeit im Transport- und Montageumfeld — Anfrage über den Kurzcheck.</p>
             </div>
             <span class="job-arrow" aria-hidden="true">→</span>
           </a>
@@ -186,19 +238,18 @@
               eine passende Rückmeldung vom Standort München.</p>
           </div>
 
-          <article class="partner-card" aria-label="Verhandlungspartner am Standort München">
+          <article class="partner-card" aria-label="Ansprechpartner am Standort München">
             <div class="partner-photo">
               <div class="photo-fallback">
-                <img src="/assets/img/locations/muenchen-montage.jpg" alt="">
+                <img src="/assets/img/locations/muenchen-montage.jpg" width="1920" height="1280" loading="lazy" decoding="async" alt="Ansprechpartner am Standort München — Translogistik Küchenmontage" style="object-position:62% 12%">
               </div>
             </div>
             <div class="partner-body">
-              <p class="eyebrow">Ihr Verhandlungspartner</p>
-              <h3>Max Mustermann</h3>
-              <p class="partner-role">Standortleitung München</p>
+              <p class="eyebrow">Ihr Ansprechpartner</p>
+              <h3>Standort-Team München</h3>
+              <p class="partner-role">Transport &amp; Küchenmontage</p>
               <ul class="partner-meta">
-                <li><span>Telefon</span><a href="tel:+498912345678">+49 89 123 456 78</a></li>
-                <li><span>E-Mail</span><a href="mailto:muenchen@translogistik.eu">muenchen@translogistik.eu</a></li>
+                <li><span>E-Mail</span><a href="mailto:info@translogistik.eu">info@translogistik.eu</a></li>
                 <li><span>Standort</span><span>München · Bayern</span></li>
               </ul>
             </div>
@@ -219,7 +270,7 @@
             <section class="question active" data-step="1">
               <h4>Wer fragt an?</h4>
               <p>Damit wir die Anfrage richtig einordnen.</p>
-              <div class="option-list">
+              <div class="option-list" role="radiogroup" aria-label="Wer fragt an?">
                 <label class="option"><input type="radio" name="person" value="Privatkunde">Privatkunde /
                   Käufer</label>
                 <label class="option"><input type="radio" name="person" value="Geschäftskunde">Geschäftskunde /
@@ -231,7 +282,7 @@
             <section class="question" data-step="2">
               <h4>Worum geht es?</h4>
               <p>Wählen Sie die Leistung oder den Anlass.</p>
-              <div class="option-list">
+              <div class="option-list" role="radiogroup" aria-label="Worum geht es?">
                 <label class="option"><input type="radio" name="service" value="Transport">Transport /
                   Anlieferung</label>
                 <label class="option"><input type="radio" name="service" value="Montage">Küchenmontage</label>
@@ -245,7 +296,7 @@
             <section class="question" data-step="3">
               <h4>Wie groß ist das Vorhaben?</h4>
               <p>Eine grobe Einordnung reicht für den ersten Kontakt.</p>
-              <div class="option-list">
+              <div class="option-list" role="radiogroup" aria-label="Wie groß ist das Vorhaben?">
                 <label class="option"><input type="radio" name="umfang" value="Einzelauftrag">Einzelauftrag</label>
                 <label class="option"><input type="radio" name="umfang" value="Mehrere Küchen">Mehrere Küchen /
                   Projekt</label>
@@ -264,6 +315,8 @@
                 <label class="wide">Ihre Nachricht<textarea name="nachricht"
                     placeholder="Weitere Angaben zu Ihrem Anliegen"></textarea></label>
               </div>
+              <p class="privacy" style="margin-top:14px;font-size:13px;color:var(--muted)">Mit dem Absenden stimmen Sie
+                der Verarbeitung Ihrer Angaben gemäß unserer <a href="/datenschutz">Datenschutzerklärung</a> zu.</p>
             </section>
 
             <div class="question-actions">
@@ -275,11 +328,11 @@
 
           <section class="confirmation" id="confirmation" aria-live="polite">
             <div class="confetti" id="confetti" aria-hidden="true"></div>
-            <p class="eyebrow">Anfrage eingegangen</p>
-            <h3>Vielen Dank.</h3>
-            <p>Ihre Anfrage wurde dem Standort München zugeordnet. Das zuständige Team meldet sich zeitnah über den
-              angegebenen Kontaktweg.</p>
-            <div class="reference" id="reference">TL-MUC-000000</div>
+            <p class="eyebrow">Fast geschafft</p>
+            <h3>E-Mail absenden.</h3>
+            <p>Ihr E-Mail-Programm öffnet sich mit Ihrer vorbereiteten Anfrage an den Standort München. Einfach
+              absenden — das Team meldet sich zeitnah. Alternativ erreichen Sie uns direkt unter
+              <a href="mailto:info@translogistik.eu">info@translogistik.eu</a>.</p>
             <button class="btn btn--red" type="button" id="restart">Weitere Anfrage senden</button>
           </section>
         </form>
@@ -293,7 +346,7 @@
   <footer class="footer">
     <div class="wrap footer-inner">
       <div class="footer-brand">
-        <a href="index.html" class="footer-logo" aria-label="Zur Startseite">
+        <a href="/" class="footer-logo" aria-label="Zur Startseite">
           <img src="/assets/brand/logo.svg" alt="Translogistik">
         </a>
         <p>Transport und fachgerechte Montage für Küchen — vom Lager bis zum aufgebauten Ergebnis.</p>
@@ -318,28 +371,27 @@
       </div>
       <nav class="footer-col" aria-label="Unternehmen">
         <strong>Unternehmen</strong>
-        <a href="ueber-uns.html">Über uns</a>
-        <a href="index.html#gruppe">Krieger Gruppe</a>
-        <a href="offene-stellen.html">Karriere</a>
+        <a href="/ueber-uns">Über uns</a>
+        <a href="/#gruppe">Krieger Gruppe</a>
+        <a href="/offene-stellen">Karriere</a>
       </nav>
       <nav class="footer-col" aria-label="Leistungen">
         <strong>Leistungen</strong>
-        <a href="index.html#prozess">Transport</a>
-        <a href="index.html#prozess">Montage</a>
-        <a href="index.html#standorte">Standorte</a>
+        <a href="/#prozess">Transport</a>
+        <a href="/#prozess">Montage</a>
+        <a href="/#standorte">Standorte</a>
       </nav>
       <nav class="footer-col" aria-label="Kontakt">
         <strong>Kontakt</strong>
         <a href="#kontakt">Standort München</a>
-        <a href="offene-stellen.html">Bewerbung</a>
-        <a href="index.html">Zur Startseite ↑</a>
+        <a href="/offene-stellen">Bewerbung</a>
+        <a href="/">Zur Startseite ↑</a>
       </nav>
       <div class="footer-legal">
-        <span>© 2026 Translogistik · Prototyp</span>
+        <span>© 2026 Translogistik Günthersdorf Service GmbH &amp; Co. KG</span>
         <span>
-          <a href="impressum.html">Impressum</a> ·
-          <a href="datenschutz.html">Datenschutz</a> ·
-          Bildrechte und Fakten vor Produktion prüfen
+          <a href="/impressum">Impressum</a> ·
+          <a href="/datenschutz">Datenschutz</a>
         </span>
       </div>
     </div>

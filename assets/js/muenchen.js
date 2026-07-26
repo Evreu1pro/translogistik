@@ -16,20 +16,31 @@
   syncRoute();
 
   // ---- Standort map (same data/behavior as main.js, München default) ----
+  // München first — only live Standortseite; other slugs intentionally 404.
   const cities = [
-    ['Hamburg', 50, 24, '', 4, -2],
-    ['Bremen', 44, 31, 'Neueröffnung Spätsommer 2026', 4, 1],
-    ['Berlin', 69, 32, '', 4, 1],
-    ['Paderborn', 40, 46, '', 4, 1],
-    ['Günthersdorf', 65, 51, '', 4, 1],
-    ['Köln', 30, 52, '', -4, 1],
-    ['Langenselbold', 49, 59, '', 4, 1],
-    ['Fürth', 51, 71, '', 4, 1],
     ['München', 57, 82, 'Ihr direkter Standort — diese Seite.', 4, 1],
+    ['Hamburg', 50, 24, 'Standortseite in Vorbereitung.', 4, -2],
+    ['Bremen', 44, 31, 'Neueröffnung Spätsommer 2026 · Seite in Vorbereitung.', 4, 1],
+    ['Berlin', 69, 32, 'Standortseite in Vorbereitung.', 4, 1],
+    ['Paderborn', 40, 46, 'Standortseite in Vorbereitung.', 4, 1],
+    ['Günthersdorf', 65, 51, 'Standortseite in Vorbereitung.', 4, 1],
+    ['Köln', 30, 52, 'Standortseite in Vorbereitung.', -4, 1],
+    ['Langenselbold', 49, 59, 'Standortseite in Vorbereitung.', 4, 1],
+    ['Fürth', 51, 71, 'Standortseite in Vorbereitung.', 4, 1],
   ];
-  const cityPages = { München: 'translogistik-muenchen.html' };
-  const cityHref = (name) => cityPages[name] || '404.html';
-  
+  const cityPages = { München: '/translogistik-muenchen' };
+  const citySlug = (name) =>
+    '/translogistik-' +
+    name
+      .toLowerCase()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  const cityHref = (name) => cityPages[name] || citySlug(name);
+
   const list = document.querySelector('#cities');
   const markers = document.querySelector('#markers');
   const nameEl = document.querySelector('#city-name');
@@ -39,22 +50,27 @@
   const defaultIndex = cities.findIndex((c) => c[0] === 'München');
 
   if (list && markers && nameEl && infoEl) {
+    list.textContent = ''; // rebuild the server-rendered list with interactive buttons
     cities.forEach((c, i) => {
       const li = document.createElement('li');
       const b = document.createElement('button');
       b.type = 'button';
       b.textContent = c[0];
       b.dataset.i = String(i);
+      b.dataset.city = c[0];
+      if (c[0] === 'München') b.classList.add('is-live');
       b.setAttribute('aria-pressed', i === defaultIndex ? 'true' : 'false');
       b.addEventListener('click', () => selectCity(i));
       li.append(b);
       list.append(li);
 
       const anchor = c[4] < 0 ? 'end' : 'start';
-      const lx = c[4] < 0 ? c[4] + 1 : c[4] - 1;
+      const labelX = c[4] < 0 ? -2.6 : 2.6;
+      const labelY = c[5] < 0 ? -1.4 : 1.6;
+      const lx = c[4] < 0 ? labelX + 0.6 : labelX - 0.6;
       markers.insertAdjacentHTML(
         'beforeend',
-        `<g class="marker ${i === defaultIndex ? 'on' : ''}" tabindex="0" role="button" aria-label="${c[0]} auswählen" data-i="${i}" transform="translate(${c[1]} ${c[2]})"><circle class="halo" r="2.35"></circle><circle class="dot" r="1.15"></circle><line class="leader" x1="${c[4] < 0 ? -2.4 : 2.4}" y1="0" x2="${lx}" y2="${c[5] - 0.8}"></line><text x="${c[4]}" y="${c[5]}" text-anchor="${anchor}">${c[0]}</text></g>`
+        `<g class="marker ${i === defaultIndex ? 'on' : ''}" tabindex="0" role="button" aria-label="${c[0]} auswählen" data-i="${i}" transform="translate(${c[1]} ${c[2]})"><circle class="halo" r="1.6"></circle><circle class="dot" r="0.95"></circle><line class="leader" x1="${c[4] < 0 ? -1.5 : 1.5}" y1="0" x2="${lx}" y2="${labelY - 0.5}"></line><text x="${labelX}" y="${labelY}" text-anchor="${anchor}">${c[0]}</text></g>`
       );
     });
 
@@ -66,14 +82,15 @@
       const name = cities[i][0];
       nameEl.textContent = name;
       infoEl.textContent =
-        cities[i][3] || 'Kontaktdaten werden vor Produktion ergänzt.';
+        cities[i][3] || 'Bewerbungen und Anfragen: info@translogistik.eu';
       if (cityLink) {
-        const href = cityHref(name);
-        cityLink.href = href;
+        cityLink.href = cityHref(name);
         cityLink.textContent =
           name === 'München'
             ? 'Sie sind auf der Seite München'
             : 'Standortseite öffnen →';
+        cityLink.classList.toggle('btn--red', name === 'München');
+        cityLink.classList.toggle('btn--ghost-ink', name !== 'München');
         if (name === 'München') {
           cityLink.setAttribute('aria-current', 'page');
           cityLink.href = '#standorte';
@@ -202,17 +219,40 @@
     }
   }
 
+  const CONTACT_EMAIL = 'info@translogistik.eu';
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validStep()) return;
+
+    const data = new FormData(form);
+    const subject =
+      'Anfrage Standort München — ' +
+      (data.get('service') || 'Allgemein') +
+      ' (' + (data.get('person') || 'Kontakt') + ')';
+    const body = [
+      'Wer fragt an: ' + (data.get('person') || '—'),
+      'Anliegen: ' + (data.get('service') || '—'),
+      'Umfang: ' + (data.get('umfang') || '—'),
+      '',
+      'Name: ' + (data.get('name') || '—'),
+      'Telefon: ' + (data.get('telefon') || '—'),
+      'E-Mail: ' + (data.get('email') || '—'),
+      '',
+      'Nachricht:',
+      data.get('nachricht') || '—',
+      '',
+      'Gesendet über das Kontaktformular der Standortseite München.'
+    ].join('\n');
+    location.href =
+      'mailto:' + CONTACT_EMAIL +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+
     if (wizard) wizard.classList.add('hidden');
     if (confirmation) {
       confirmation.classList.add('show');
       burstConfetti();
-    }
-    if (reference) {
-      reference.textContent =
-        'TL-MUC-' + String(Math.floor(100000 + Math.random() * 900000));
     }
   });
 

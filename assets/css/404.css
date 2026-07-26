@@ -1,31 +1,117 @@
-.error-404{min-height:100svh;display:flex;flex-direction:column;text-align:center;overflow:hidden}
-.error-404 .site-header{background:rgba(247,245,241,.98);border-color:var(--line)}
-.error-404 .site-header .header-inner{height:68px}
+.error-404{min-height:100svh;display:flex;flex-direction:column;text-align:center;overflow-x:hidden}
+.error-404 .site-header{background:rgba(247,245,241,.98);border-color:var(--line);position:relative}
+.error-404 .site-header .header-inner{height:68px;grid-template-columns:1fr}
 .error-404 .nav a{color:var(--ink)!important;text-shadow:none!important}
 .error-404 .menu-btn{color:var(--ink);border-color:var(--line)}
 .error-404 .brand{background:transparent!important;box-shadow:none!important}
-.error-404 main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 0 60px}
-.error-404 .wrap{display:flex;flex-direction:column;align-items:center}
-.error-code{font-size:clamp(120px,22vw,280px);font-weight:900;line-height:.82;letter-spacing:-.07em;color:var(--ink);position:relative;margin-bottom:8px}
-.error-code span{display:inline-block;opacity:0;transform:translateY(40px) scale(.92);animation:errIn .8s var(--ease) forwards}
-.error-code span:nth-child(2){animation-delay:.15s}
-.error-code span:nth-child(3){animation-delay:.3s}
-.error-route{width:min(360px,60%);height:3px;background:var(--line);position:relative;margin-bottom:32px;overflow:hidden}
-.error-route:after{content:"";position:absolute;left:-100%;top:0;height:100%;width:100%;background:var(--red);animation:routeDraw 1.6s var(--ease) .5s forwards}
-.error-message h2{font-size:clamp(24px,3.6vw,44px);margin-bottom:16px;opacity:0;transform:translateY(20px);animation:errIn .6s var(--ease) .6s forwards}
-.error-message p{font-size:clamp(16px,1.4vw,19px);color:var(--muted);line-height:1.55;max-width:52ch;margin:0 auto 8px;opacity:0;transform:translateY(20px);animation:errIn .6s var(--ease) .75s forwards}
-.error-message a{color:var(--red);text-decoration-color:var(--red);text-underline-offset:4px}
-.error-message a:hover{color:#8e1720}
-.error-actions{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(20px);animation:errIn .6s var(--ease) .9s forwards}
-.error-actions .btn--red{background:var(--red);color:white;border-color:var(--red)}
+.error-404 main.wrap,
+.error-404 main{
+  flex:1;
+  width:min(var(--max),calc(100% - 48px));
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 0 60px;
+  box-sizing:border-box;
+}
+.error-404 .error-code{
+  font-size:clamp(120px,22vw,280px);
+  font-weight:900;
+  line-height:.82;
+  letter-spacing:-.07em;
+  color:var(--ink);
+  position:relative;
+  margin:0 0 8px;
+  max-width:none;
+  width:auto;
+  writing-mode:horizontal-tb;
+  transform:none;
+}
+.error-404 .error-code span{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(40px) scale(.92);
+  animation:errIn .8s var(--ease) forwards;
+}
+.error-404 .error-code span:nth-child(2){animation-delay:.15s}
+.error-404 .error-code span:nth-child(3){animation-delay:.3s}
+.error-404 .error-route{
+  width:min(360px,60%);
+  height:3px;
+  background:var(--line);
+  position:relative;
+  margin:0 auto 32px;
+  overflow:hidden;
+}
+.error-404 .error-route:after{
+  content:"";
+  position:absolute;
+  left:-100%;
+  top:0;
+  height:100%;
+  width:100%;
+  background:var(--red);
+  animation:routeDraw 1.6s var(--ease) .5s forwards;
+}
+/* Override global h1 { max-width:12ch } that made 404 copy look sideways/stacked */
+.error-404 .error-message{
+  max-width:min(56ch,100%);
+  margin:0 auto;
+  text-align:center;
+}
+.error-404 .error-message h1{
+  font-size:clamp(24px,3.6vw,44px);
+  line-height:1.15;
+  letter-spacing:-.03em;
+  max-width:none;
+  width:100%;
+  margin:0 0 16px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:errIn .6s var(--ease) .6s forwards;
+  writing-mode:horizontal-tb;
+}
+.error-404 .error-message p{
+  font-size:clamp(16px,1.4vw,19px);
+  color:var(--muted);
+  line-height:1.55;
+  max-width:52ch;
+  margin:0 auto 8px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:errIn .6s var(--ease) .75s forwards;
+}
+.error-404 .error-message a{color:var(--red);text-decoration-color:var(--red);text-underline-offset:4px}
+.error-404 .error-message a:hover{color:#8e1720}
+.error-404 .error-actions{
+  margin-top:36px;
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  justify-content:center;
+  opacity:0;
+  transform:translateY(20px);
+  animation:errIn .6s var(--ease) .9s forwards;
+}
+.error-404 .error-actions .btn--red{background:var(--red);color:white;border-color:var(--red)}
 .error-404 .footer{margin-top:80px;animation:errIn .6s var(--ease) 1.05s both}
 @keyframes errIn{to{opacity:1;transform:none}}
 @keyframes routeDraw{to{left:100%}}
-@media(max-width:800px){.error-404 main{padding:80px 0 40px}
-.error-actions{flex-direction:column;align-items:stretch;width:100%}
-.error-actions .btn{width:100%}
-.error-404 .footer{margin-top:40px}
+@media(max-width:800px){
+  .error-404 main.wrap,
+  .error-404 main{padding:80px 0 40px;width:min(100% - 32px,var(--max))}
+  .error-404 .error-actions{flex-direction:column;align-items:stretch;width:100%}
+  .error-404 .error-actions .btn{width:100%}
+  .error-404 .footer{margin-top:40px}
 }
-@media(prefers-reduced-motion:reduce){.error-code span,.error-message h2,.error-message p,.error-actions,.error-404 .footer{opacity:1;transform:none;animation:none}
-.error-route:after{left:100%}
+@media(prefers-reduced-motion:reduce){
+  .error-404 .error-code span,
+  .error-404 .error-message h1,
+  .error-404 .error-message p,
+  .error-404 .error-actions,
+  .error-404 .footer{opacity:1;transform:none;animation:none}
+  .error-404 .error-route:after{left:100%}
 }

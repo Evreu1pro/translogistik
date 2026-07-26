@@ -138,21 +138,32 @@
   syncProcessScroll();
 
   /* ── Germany map: 9 cities + search ──────────────────────────────────── */
-  // [name, x%, y%, note, labelDx, labelDy]
+  // [name, x%, y%, note, labelDx, labelDy] — München first (only live site page)
   const cities = [
-    ['Hamburg', 50, 24, '', 4, -2],
-    ['Bremen', 44, 31, 'Neueröffnung Spätsommer 2026', 4, 1],
-    ['Berlin', 69, 32, '', 4, 1],
-    ['Paderborn', 40, 46, '', 4, 1],
-    ['Günthersdorf', 65, 51, '', 4, 1],
-    ['Köln', 30, 52, '', -4, 1],
-    ['Langenselbold', 49, 59, '', 4, 1],
-    ['Fürth', 51, 71, '', 4, 1],
-    ['München', 57, 82, '', 4, 1],
+    ['München', 57, 82, 'Standortseite verfügbar.', 4, 1],
+    ['Hamburg', 50, 24, 'Standortseite in Vorbereitung.', 4, -2],
+    ['Bremen', 44, 31, 'Neueröffnung Spätsommer 2026 · Seite in Vorbereitung.', 4, 1],
+    ['Berlin', 69, 32, 'Standortseite in Vorbereitung.', 4, 1],
+    ['Paderborn', 40, 46, 'Standortseite in Vorbereitung.', 4, 1],
+    ['Günthersdorf', 65, 51, 'Standortseite in Vorbereitung.', 4, 1],
+    ['Köln', 30, 52, 'Standortseite in Vorbereitung.', -4, 1],
+    ['Langenselbold', 49, 59, 'Standortseite in Vorbereitung.', 4, 1],
+    ['Fürth', 51, 71, 'Standortseite in Vorbereitung.', 4, 1],
   ];
 
-  const cityPages = { München: 'translogistik-muenchen.html' };
-  const cityHref = (name) => cityPages[name] || '404.html';
+  const cityPages = { München: '/translogistik-muenchen' };
+  const citySlug = (name) =>
+    '/translogistik-' +
+    name
+      .toLowerCase()
+      .replace(/ä/g, 'ae')
+      .replace(/ö/g, 'oe')
+      .replace(/ü/g, 'ue')
+      .replace(/ß/g, 'ss')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+  // Only München has a page; other slugs intentionally 404 until built.
+  const cityHref = (name) => cityPages[name] || citySlug(name);
 
   const list = document.querySelector('#cities');
   const markers = document.querySelector('#markers');
@@ -162,28 +173,35 @@
   const citySearch = document.querySelector('#city-search');
 
   if (list && markers && nameEl && infoEl) {
+    list.textContent = ''; // rebuild the server-rendered list with interactive buttons
     cities.forEach((c, i) => {
       const li = document.createElement('li');
       const btn = document.createElement('button');
+      btn.type = 'button';
       btn.textContent = c[0];
       btn.dataset.i = i;
+      btn.dataset.city = c[0];
+      if (c[0] === 'München') btn.classList.add('is-live');
       btn.setAttribute('aria-pressed', i === 0);
       btn.onclick = () => selectCity(i);
       li.append(btn);
       list.append(li);
 
       const anchor = c[4] < 0 ? 'end' : 'start';
-      const lx = c[4] < 0 ? c[4] + 1 : c[4] - 1;
+      // Label offset + thin leader (room for larger city names)
+      const labelX = c[4] < 0 ? -3.1 : 3.1;
+      const labelY = c[5] < 0 ? -1.7 : 1.9;
+      const lx = c[4] < 0 ? labelX + 0.7 : labelX - 0.7;
       markers.insertAdjacentHTML(
         'beforeend',
         `<g class="marker ${i === 0 ? 'on' : ''}" tabindex="0" role="button"
             aria-label="${c[0]} auswählen" data-i="${i}"
             transform="translate(${c[1]} ${c[2]})">
-          <circle class="halo" r="2.35"></circle>
-          <circle class="dot" r="1.15"></circle>
-          <line class="leader" x1="${c[4] < 0 ? -2.4 : 2.4}" y1="0"
-                x2="${lx}" y2="${c[5] - 0.8}"></line>
-          <text x="${c[4]}" y="${c[5]}" text-anchor="${anchor}">${c[0]}</text>
+          <circle class="halo" r="1.6"></circle>
+          <circle class="dot" r="0.95"></circle>
+          <line class="leader" x1="${c[4] < 0 ? -1.5 : 1.5}" y1="0"
+                x2="${lx}" y2="${labelY - 0.5}"></line>
+          <text x="${labelX}" y="${labelY}" text-anchor="${anchor}">${c[0]}</text>
         </g>`
       );
     });
@@ -197,15 +215,16 @@
       const name = cities[i][0];
       nameEl.textContent = name;
       infoEl.textContent =
-        cities[i][3] || 'Kontaktdaten werden vor Produktion ergänzt.';
+        cities[i][3] || 'Bewerbungen und Anfragen: info@translogistik.eu';
 
       if (cityLink) {
-        const href = cityHref(name);
-        cityLink.href = href;
+        cityLink.href = cityHref(name);
         cityLink.textContent =
           name === 'München'
             ? 'Standort München öffnen →'
             : 'Standortseite öffnen →';
+        cityLink.classList.toggle('btn--red', name === 'München');
+        cityLink.classList.toggle('btn--ghost-ink', name !== 'München');
       }
     }
 
